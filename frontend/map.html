@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Waste Map | Smart Waste Mapping Platform</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <i class="fas fa-recycle"></i>
+            <span>SmartWaste</span>
+        </div>
+        <div class="menu-toggle">
+            <i class="fas fa-bars"></i>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="report.html">Report Waste</a></li>
+                <li><a href="map.html">Map View</a></li>
+                <li><a href="awareness.html">Awareness</a></li>
+                <li><a href="admin.html">Admin</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main id="map-container">
+        <div id="map"></div>
+        <div class="map-overlay">
+            <h3>Map Legend</h3>
+            <div class="legend-item">
+                <div class="dot waste"></div>
+                <span>Waste Report</span>
+            </div>
+            <div class="legend-item">
+                <div class="dot hotspot"></div>
+                <span>Waste Hotspot</span>
+            </div>
+            <div class="legend-item">
+                <div class="dot recycle"></div>
+                <span>Recycling Center</span>
+            </div>
+            <p class="map-legend-caption">Hotspots are areas with high waste concentration.</p>
+        </div>
+    </main>
+
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
+    
+    <!-- Leaflet JS -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+    <script src="mobile-menu.js"></script>
+    <script src="map.js"></script>
+</body>
+</html>

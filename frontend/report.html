@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Report Waste | Smart Waste Mapping Platform</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <i class="fas fa-recycle"></i>
+            <span>SmartWaste</span>
+        </div>
+        <div class="menu-toggle">
+            <i class="fas fa-bars"></i>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="report.html">Report Waste</a></li>
+                <li><a href="map.html">Map View</a></li>
+                <li><a href="awareness.html">Awareness</a></li>
+                <li><a href="admin.html">Admin</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <div class="report-form-container">
+            <h2>Report Waste Location</h2>
+            <form id="reportForm">
+                <div class="form-group">
+                    <label for="location">Location Name / Address</label>
+                    <input type="text" id="location" placeholder="e.g. Park Avenue, Sector 5" required>
+                    <button type="button" class="location-btn" id="detectLocation">
+                        <i class="fas fa-crosshairs"></i> Detect GPS Location
+                    </button>
+                    <input type="hidden" id="latitude">
+                    <input type="hidden" id="longitude">
+                    <p id="lat-long-display"></p>
+                </div>
+
+                <div class="form-group">
+                    <label for="description">Description</label>
+                    <textarea id="description" rows="4" placeholder="Describe the waste (e.g. overflowing bin, plastic pile)" required></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="wasteCategory">Waste Category (AI Detected)</label>
+                    <div class="category-input-group">
+                        <select id="wasteCategory" required>
+                            <option value="">Select or use AI to detect</option>
+                            <option value="Plastic">Plastic</option>
+                            <option value="Organic">Organic</option>
+                            <option value="Metal">Metal</option>
+                            <option value="Other">Other</option>
+                        </select>
+                        <button type="button" class="ai-btn" id="analyzeBtn" disabled>
+                            <i class="fas fa-robot"></i> Analyze Image
+                        </button>
+                    </div>
+                    <p id="ai-status" class="status-text"></p>
+                </div>
+
+                <div class="form-group">
+                    <label for="photo">Upload Photo</label>
+                    <input type="file" id="photo" accept="image/*" required>
+                    <div class="photo-preview" id="photoPreview">
+                        <span>Photo preview will appear here</span>
+                        <img src="" alt="Preview">
+                    </div>
+                </div>
+
+                <button type="submit" class="submit-btn" id="submitBtn">Submit Report</button>
+            </form>
+        </div>
+    </main>
+
+    </footer>
+
+    <script src="mobile-menu.js"></script>
+    <script src="report.js"></script>
+</body>
+</html>

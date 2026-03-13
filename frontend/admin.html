@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard | Smart Waste Mapping Platform</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <i class="fas fa-recycle"></i>
+            <span>SmartWaste</span>
+        </div>
+        <div class="menu-toggle">
+            <i class="fas fa-bars"></i>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="report.html">Report Waste</a></li>
+                <li><a href="map.html">Map View</a></li>
+                <li><a href="awareness.html">Awareness</a></li>
+                <li><a href="admin.html">Admin</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="admin-container">
+        <h2 class="mb-2">Admin Dashboard</h2>
+
+        <div class="stats-grid admin-stats">
+            <div class="stat-card">
+                <h3>Total Reports</h3>
+                <div class="value" id="totalReports">0</div>
+            </div>
+            <div class="stat-card">
+                <h3>Pending</h3>
+                <div class="value text-pending" id="pendingReports">0</div>
+            </div>
+            <div class="stat-card">
+                <h3>Resolved</h3>
+                <div class="value text-resolved" id="resolvedReports">0</div>
+            </div>
+        </div>
+
+        <div class="dashboard-content">
+            <div class="reports-table-container dashboard-card">
+                <h3>Recent Waste Reports</h3>
+                <table id="reportsTable">
+                    <thead>
+                        <tr>
+                            <th>Location</th>
+                            <th>Category</th>
+                            <th>Date</th>
+                            <th>Status</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Reports will be loaded here -->
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="chart-container dashboard-card">
+                <h3>Waste Hotspots</h3>
+                <div class="chart-wrapper">
+                    <canvas id="hotspotChart"></canvas>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    </footer>
+
+    <script src="mobile-menu.js"></script>
+    <script src="admin.js"></script>
+</body>
+</html>
