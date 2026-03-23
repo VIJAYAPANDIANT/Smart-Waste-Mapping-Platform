@@ -1,0 +1,10 @@
+﻿
+≡ƒÜÇ SmartWaste App is running!
+Frontend: http://localhost:8080
+Backend API: http://localhost:3000
+
+[dotenv@17.3.1] injecting env (2) from .env -- tip: ΓÜÖ∩╕Å  specify custom .env file path with { path: '/custom/path/.env' }
+[dotenv@17.3.1] injecting env (0) from .env -- tip: ≡ƒ¢á∩╕Å  run anywhere with `dotenvx run -- yourcommand`
+SmartWaste Server is running on http://localhost:3000
+Connected to SQLite database.
+Users table ready.
