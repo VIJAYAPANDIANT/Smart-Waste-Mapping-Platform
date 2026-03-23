@@ -19,5 +19,8 @@
     "express": "^5.2.1",
     "firebase-admin": "^13.7.0",
     "sqlite3": "^6.0.1"
+  },
+  "devDependencies": {
+    "@ljharb/tsconfig": "^0.3.2"
   }
 }

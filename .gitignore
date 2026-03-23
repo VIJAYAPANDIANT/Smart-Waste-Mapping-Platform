@@ -1,0 +1,28 @@
+# Temporary files
+commit_log.txt
+file_count.txt
+git_log.txt
+git_status_cmd.txt
+git_status_plain.txt
+remote.txt
+tracked_files.txt
+git_status_new.txt
+out.log
+stderr.log
+stdout.log
+startup.log
+node_v.txt
+git_status.txt
+
+# Environment
+.env
+
+# Logs
+*.log
+backend/backend.log
+backend/server.log
+
+# Dependencies
+node_modules/
+backend/node_modules/
+frontend/node_modules/
