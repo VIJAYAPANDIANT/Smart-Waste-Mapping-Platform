@@ -24,25 +24,27 @@
         </div>
         <nav>
             <ul>
-                <li><a href="index.html" class="active">Home</a></li>
-                <li><a href="report.html">Report Waste</a></li>
-                <li><a href="map.html">Map View</a></li>
-                <li><a href="awareness.html">Awareness</a></li>
-                <li><a href="admin.html">Admin</a></li>
+                <li><a href="index.html" data-route="index.html" class="active">Home</a></li>
+                <li><a href="report.html" data-route="report.html">Report Waste</a></li>
+                <li><a href="map.html" data-route="map.html">Map View</a></li>
+                <li><a href="awareness.html" data-route="awareness.html">Awareness</a></li>
+                <li><a href="admin.html" data-route="admin.html">Admin</a></li>
                 <li id="auth-nav"></li>
                 <li><button id="theme-toggle" class="theme-toggle-btn" title="Toggle Light/Dark Mode"><i class="fas fa-moon"></i></button></li>
             </ul>
         </nav>
     </header>
 
-    <main>
+    <!-- SPA Content Area — page content is injected here -->
+    <main id="spa-content" class="spa-content">
+        <!-- Default: Home page content -->
         <section class="hero">
             <h1>Smart Waste Mapping Platform</h1>
             <p>Every report counts. Help us identify waste hotspots and keep our community clean. Visualize reports on an interactive map and find nearby recycling centers.</p>
             <div class="cta-buttons">
-                <a href="report.html" class="btn btn-primary">Report Waste</a>
-                <a href="map.html" class="btn btn-secondary">View Waste Map</a>
-                <a href="awareness.html" class="btn btn-secondary">Recycling Tips</a>
+                <a href="report.html" data-route="report.html" class="btn btn-primary">Report Waste</a>
+                <a href="map.html" data-route="map.html" class="btn btn-secondary">View Waste Map</a>
+                <a href="awareness.html" data-route="awareness.html" class="btn btn-secondary">Recycling Tips</a>
             </div>
         </section>
 
@@ -78,6 +80,6 @@
     <script src="auth-ui.js"></script>
     <script src="theme-toggle.js"></script>
     <script src="mobile-menu.js"></script>
-    <script src="app.js"></script>
+    <script src="router.js"></script>
 </body>
 </html>

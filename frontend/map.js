@@ -1,17 +1,29 @@
+/**
+ * Map Page — wrapped for SPA usage
+ */
+
 let map;
 let markers = [];
+let tileLayer;
+
 const recyclingCenters = [
     { name: "City Plastic Recycling", lat: 12.9716, lng: 77.5946, type: "Plastic" },
     { name: "Eco E-Waste Collection", lat: 12.9850, lng: 77.6100, type: "E-Waste" },
     { name: "Green Composting Center", lat: 12.9500, lng: 77.5800, type: "Compost" }
 ];
 
-let tileLayer;
-
 function initMap() {
-    // Default center (Bangalore as example)
+    // If map already exists, clean it up first
+    if (map) {
+        cleanupMap();
+    }
+
+    const mapEl = document.getElementById('map');
+    if (!mapEl) return;
+
+    // Default center (Bangalore)
     const center = [12.9716, 77.5946];
-    
+
     // Initialize Leaflet map
     map = L.map('map').setView(center, 13);
 
@@ -38,13 +50,15 @@ function initMap() {
 }
 
 function updateMapStyle(theme) {
+    if (!map) return;
+
     if (tileLayer) {
         map.removeLayer(tileLayer);
     }
 
     const darkUrl = 'https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png';
     const lightUrl = 'https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png';
-    
+
     tileLayer = L.tileLayer(theme === 'dark' ? darkUrl : lightUrl, {
         attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
         subdomains: 'abcd',
@@ -63,7 +77,7 @@ async function loadReports() {
     try {
         const response = await fetch('http://localhost:3000/reports');
         const reports = await response.json();
-        
+
         displayReports(reports);
         detectHotspots(reports);
     } catch (error) {
@@ -73,8 +87,7 @@ async function loadReports() {
 
 function displayReports(reports) {
     if (!Array.isArray(reports)) return;
-    
-    // Custom Light Blue Icon for Waste Reports
+
     const ltBlueIcon = L.divIcon({
         className: 'custom-div-icon',
         html: "<div style='background-color:#60a5fa; width:12px; height:12px; border-radius:50%; border:1px solid white;'></div>",
@@ -101,8 +114,7 @@ function displayReports(reports) {
 
 function detectHotspots(reports) {
     if (!Array.isArray(reports)) return;
-    
-    // Simplified Hotspot visualization using circle markers with glow
+
     reports.forEach(report => {
         if (report.latitude && report.longitude) {
             L.circle([parseFloat(report.latitude), parseFloat(report.longitude)], {
@@ -116,5 +128,14 @@ function detectHotspots(reports) {
     });
 }
 
-// Initialize on load
-document.addEventListener('DOMContentLoaded', initMap);
+/**
+ * Cleanup: destroy map instance when navigating away
+ */
+function cleanupMap() {
+    if (map) {
+        map.remove();
+        map = null;
+        tileLayer = null;
+        markers = [];
+    }
+}

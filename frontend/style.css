@@ -1047,3 +1047,16 @@ th {
     from { opacity: 0; transform: translateY(-10px); }
     to { opacity: 1; transform: translateY(0); }
 }
+
+/* SPA Page Transitions */
+.spa-content {
+    transition: opacity 0.2s ease;
+}
+
+.spa-fade-out {
+    opacity: 0;
+}
+
+.spa-fade-in {
+    opacity: 1;
+}

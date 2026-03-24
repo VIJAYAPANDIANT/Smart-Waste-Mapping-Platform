@@ -1,3 +1,14 @@
+/**
+ * Admin Page — wrapped for SPA usage
+ */
+
+let hotspotChart;
+let lastReports = [];
+
+function initAdmin() {
+    loadDashboard();
+}
+
 async function loadDashboard() {
     try {
         const response = await fetch('http://localhost:3000/reports');
@@ -12,13 +23,19 @@ async function loadDashboard() {
 }
 
 function updateStats(reports) {
-    document.getElementById('totalReports').textContent = reports.length;
-    document.getElementById('pendingReports').textContent = reports.filter(r => r.status === 'pending').length;
-    document.getElementById('resolvedReports').textContent = reports.filter(r => r.status === 'resolved').length;
+    const totalEl = document.getElementById('totalReports');
+    const pendingEl = document.getElementById('pendingReports');
+    const resolvedEl = document.getElementById('resolvedReports');
+    if (!totalEl) return;
+
+    totalEl.textContent = reports.length;
+    pendingEl.textContent = reports.filter(r => r.status === 'pending').length;
+    resolvedEl.textContent = reports.filter(r => r.status === 'resolved').length;
 }
 
 function populateTable(reports) {
     const tbody = document.querySelector('#reportsTable tbody');
+    if (!tbody) return;
     tbody.innerHTML = '';
 
     reports.forEach(report => {
@@ -55,17 +72,14 @@ async function deleteReport(id) {
 
 function approveReport(id) {
     alert('Report approved and marked for action.');
-    // In a real app, this would call a PATCH /report/:id endpoint
 }
-
-let hotspotChart;
-let lastReports = [];
 
 function renderChart(reports) {
     lastReports = reports;
-    const ctx = document.getElementById('hotspotChart').getContext('2d');
-    
-    // Group reports by location for a simple chart
+    const canvas = document.getElementById('hotspotChart');
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+
     const locationCounts = {};
     reports.forEach(r => {
         locationCounts[r.location] = (locationCounts[r.location] || 0) + 1;
@@ -80,6 +94,7 @@ function renderChart(reports) {
 
     if (hotspotChart) {
         hotspotChart.destroy();
+        hotspotChart = null;
     }
 
     hotspotChart = new Chart(ctx, {
@@ -124,4 +139,13 @@ window.addEventListener('themeChanged', () => {
     }
 });
 
-document.addEventListener('DOMContentLoaded', loadDashboard);
+/**
+ * Cleanup: destroy chart instance when navigating away
+ */
+function cleanupAdmin() {
+    if (hotspotChart) {
+        hotspotChart.destroy();
+        hotspotChart = null;
+    }
+    lastReports = [];
+}

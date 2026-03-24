@@ -1,4 +1,9 @@
-document.addEventListener('DOMContentLoaded', () => {
+/**
+ * Auth UI — handles user profile display and logout
+ * Exposes initAuthUI() for the SPA router to re-initialize after page swap.
+ */
+
+function initAuthUI() {
     const authNav = document.getElementById('auth-nav');
     if (!authNav) return;
 
@@ -49,11 +54,17 @@ document.addEventListener('DOMContentLoaded', () => {
         document.getElementById('logoutBtn').addEventListener('click', (e) => {
             e.preventDefault();
             localStorage.removeItem('user');
-            window.location.href = 'index.html';
+            // Full redirect to login page (separate page, not in SPA)
+            window.location.href = 'login.html';
         });
     } else {
         authNav.innerHTML = `
             <a href="login.html" class="btn btn-primary btn-auth">Login</a>
         `;
     }
+}
+
+// Initialize on first load
+document.addEventListener('DOMContentLoaded', () => {
+    initAuthUI();
 });
