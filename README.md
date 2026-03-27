@@ -115,25 +115,6 @@ The SmartWaste Platform creates a seamless bridge between concerned citizens and
 
 ---
 
-## 🌩️ Vercel Deployment
-
-The platform is fully optimized for one-click deployment to **Vercel**.
-
-### 🛠️ Step-by-Step Deployment:
-
-1.  **Connect Repo**: Push your code to GitHub and connect the repository in the [Vercel Dashboard](https://vercel.com/dashboard).
-2.  **Environment Variables**: Add the following keys in your Vercel Project Settings:
-    -   `SUPABASE_URL`: Your project URL.
-    -   `SUPABASE_SERVICE_KEY`: Your service role key.
-    -   `GEMINI_API_KEY`: Your Google AI Studio key.
-    -   `NODE_ENV`: `production`
-3.  **Root Directory**: Leave as the root (`./`).
-4.  **Automatic Routing**: The included `vercel.json` will automatically:
-    -   Serve the **OLED Frontend** for all web requests.
-    -   Route API calls (like `/reports` and `/leaderboard`) to the **Serverless Backend**.
-
----
-
 ## ✍️ Author
 **Vijayapandian T**
 -   GitHub: [@VIJAYAPANDIANT](https://github.com/VIJAYAPANDIANT)
