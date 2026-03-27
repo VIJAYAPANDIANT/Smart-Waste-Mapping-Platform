@@ -24,11 +24,11 @@
         </div>
         <nav>
             <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="report.html">Report Waste</a></li>
-                <li><a href="map.html" class="active">Map View</a></li>
-                <li><a href="awareness.html">Awareness</a></li>
-                <li><a href="admin.html">Admin</a></li>
+                <li><a href="index.html" data-route="index.html">Home</a></li>
+                <li><a href="report.html" data-route="report.html">Report Waste</a></li>
+                <li><a href="map.html" data-route="map.html" class="active">Map View</a></li>
+                <li><a href="awareness.html" data-route="awareness.html">Awareness</a></li>
+                <li><a href="admin.html" data-route="admin.html">Overview</a></li>
                 <li id="auth-nav"></li>
                 <li><button id="theme-toggle" class="theme-toggle-btn" title="Toggle Light/Dark Mode"><i class="fas fa-moon"></i></button></li>
             </ul>
@@ -41,18 +41,22 @@
             <div class="map-overlay">
                 <h3>Map Legend</h3>
                 <div class="legend-item">
-                    <div class="dot waste"></div>
+                    <i class="fas fa-trash-alt icon-blue"></i>
                     <span>Waste Report</span>
                 </div>
                 <div class="legend-item">
-                    <div class="dot hotspot"></div>
-                    <span>Waste Hotspot</span>
+                    <i class="fas fa-exclamation-triangle icon-red"></i>
+                    <span>Pending Hotspot</span>
                 </div>
                 <div class="legend-item">
-                    <div class="dot recycle"></div>
+                    <i class="fas fa-check-circle icon-green"></i>
+                    <span>Resolved Hotspot</span>
+                </div>
+                <div class="legend-item">
+                    <i class="fas fa-recycle icon-green"></i>
                     <span>Recycling Center</span>
                 </div>
-                <p class="map-legend-caption">Hotspots are areas with high waste concentration.</p>
+                <p class="map-legend-caption">Icons represent the type of report or facility.</p>
             </div>
         </div>
     </main>

@@ -24,11 +24,11 @@
         </div>
         <nav>
             <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="report.html">Report Waste</a></li>
-                <li><a href="map.html">Map View</a></li>
-                <li><a href="awareness.html" class="active">Awareness</a></li>
-                <li><a href="admin.html">Admin</a></li>
+                <li><a href="index.html" data-route="index.html">Home</a></li>
+                <li><a href="report.html" data-route="report.html">Report Waste</a></li>
+                <li><a href="map.html" data-route="map.html">Map View</a></li>
+                <li><a href="awareness.html" data-route="awareness.html" class="active">Awareness</a></li>
+                <li><a href="admin.html" data-route="admin.html">Overview</a></li>
                 <li id="auth-nav"></li>
                 <li><button id="theme-toggle" class="theme-toggle-btn" title="Toggle Light/Dark Mode"><i class="fas fa-moon"></i></button></li>
             </ul>
@@ -118,12 +118,67 @@
                 </li>
             </ul>
         </div>
+
+        <section class="real-world-impact">
+            <div class="section-title">
+                <h2>Real-World Success Stories</h2>
+                <p>See how smart waste technology is transforming cities across the globe.</p>
+            </div>
+            
+            <div class="impact-grid">
+                <div class="impact-card">
+                    <div class="impact-img-placeholder sf-bg">
+                        <i class="fas fa-city icon-big"></i>
+                    </div>
+                    <h4>San Francisco, USA</h4>
+                    <p>Redirects over 80% of waste from landfills using strict segregation and mandatory composting laws similar to our mapping logic.</p>
+                    <span class="impact-badge">80% Diversion</span>
+                </div>
+                
+                <div class="impact-card">
+                    <div class="impact-img-placeholder sk-bg">
+                        <i class="fas fa-microchip icon-big"></i>
+                    </div>
+                    <h4>South Korea</h4>
+                    <p>Uses RFID-enabled smart bins that charge residents by the weight of food waste produced, reducing food waste by 10% annually.</p>
+                    <span class="impact-badge">Smart Bins</span>
+                </div>
+                
+                <div class="impact-card">
+                    <div class="impact-img-placeholder bc-bg">
+                        <i class="fas fa-wind icon-big"></i>
+                    </div>
+                    <h4>Barcelona, Spain</h4>
+                    <p>Employs pneumatic vacuum pipes to "suck" waste from curb-side bins to central collection points, reducing truck noise and CO2 emissions.</p>
+                    <span class="impact-badge">Automated Collection</span>
+                </div>
+            </div>
+        </section>
+        <section class="leaderboard-section">
+            <div class="section-title">
+                <h2>Community Impact Leaderboard</h2>
+                <p>Top contributors making a difference in the city.</p>
+            </div>
+            
+            <div class="leaderboard-container">
+                <div class="leaderboard-header">
+                    <span>Rank</span>
+                    <span>Contributor</span>
+                    <span>Impact Score</span>
+                </div>
+                <div id="leaderboard-list">
+                    <!-- Loaded via JS -->
+                    <div class="loading-spinner"><i class="fas fa-spinner fa-spin"></i> Loading rankings...</div>
+                </div>
+            </div>
+        </section>
     </main>
 
     <footer>
         <p>&copy; 2026 SmartWaste Mapping Platform. All rights reserved.</p>
     </footer>
     <script src="auth-ui.js"></script>
+    <script src="awareness.js"></script>
     <script src="theme-toggle.js"></script>
     <script src="mobile-menu.js"></script>
 </body>

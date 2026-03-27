@@ -3,11 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Dashboard | Smart Waste Mapping Platform</title>
+    <title>Dashboard Overview | Smart Waste Mapping Platform</title>
     <link rel="stylesheet" href="style.css">
     <script>
-        if (!localStorage.getItem('user')) {
-             window.location.href = 'login.html';
+        const user = JSON.parse(localStorage.getItem('user'));
+        if (!user || user.role !== 'admin') {
+             window.location.href = 'index.html';
         }
     </script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
@@ -25,11 +26,11 @@
         </div>
         <nav>
             <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="report.html">Report Waste</a></li>
-                <li><a href="map.html">Map View</a></li>
-                <li><a href="awareness.html">Awareness</a></li>
-                <li><a href="admin.html" class="active">Admin</a></li>
+                <li><a href="index.html" data-route="index.html">Home</a></li>
+                <li><a href="report.html" data-route="report.html">Report Waste</a></li>
+                <li><a href="map.html" data-route="map.html">Map View</a></li>
+                <li><a href="awareness.html" data-route="awareness.html">Awareness</a></li>
+                <li><a href="admin.html" data-route="admin.html" class="active">Overview</a></li>
                 <li id="auth-nav"></li>
                 <li><button id="theme-toggle" class="theme-toggle-btn" title="Toggle Light/Dark Mode"><i class="fas fa-moon"></i></button></li>
             </ul>
@@ -37,7 +38,13 @@
     </header>
 
     <main class="admin-container">
-        <h2 class="mb-2">Admin Dashboard</h2>
+        <div class="admin-header-row">
+            <h2 class="mb-2">Analytics Overview</h2>
+            <div class="header-actions">
+                <button id="seedDataBtn" class="btn-sm btn-approve mr-2"><i class="fas fa-magic"></i> Seed Sample Data</button>
+                <button id="exportCsvBtn" class="btn-sm btn-approve"><i class="fas fa-file-export"></i> Export CSV</button>
+            </div>
+        </div>
 
         <div class="stats-grid admin-stats">
             <div class="stat-card">
@@ -61,6 +68,7 @@
                     <thead>
                         <tr>
                             <th>Location</th>
+                            <th>Contributor</th>
                             <th>Category</th>
                             <th>Date</th>
                             <th>Status</th>
@@ -73,10 +81,26 @@
                 </table>
             </div>
 
-            <div class="chart-container dashboard-card">
-                <h3>Waste Hotspots</h3>
-                <div class="chart-wrapper">
-                    <canvas id="hotspotChart"></canvas>
+            <div class="charts-column">
+                <div class="chart-container dashboard-card mb-2">
+                    <h3>Waste Hotspots (by Area)</h3>
+                    <div class="chart-wrapper">
+                        <canvas id="hotspotChart"></canvas>
+                    </div>
+                </div>
+                
+                <div class="chart-container dashboard-card mb-2">
+                    <h3>Report Status Distribution</h3>
+                    <div class="chart-wrapper">
+                        <canvas id="statusChart"></canvas>
+                    </div>
+                </div>
+
+                <div class="chart-container dashboard-card">
+                    <h3>Reporting Trend (Last 30 Days)</h3>
+                    <div class="chart-wrapper">
+                        <canvas id="trendChart"></canvas>
+                    </div>
                 </div>
             </div>
         </div>
@@ -87,6 +111,7 @@
     </footer>
 
     <script src="auth-ui.js"></script>
+    <script src="ui-utils.js"></script>
     <script src="theme-toggle.js"></script>
     <script src="mobile-menu.js"></script>
     <script src="admin.js"></script>

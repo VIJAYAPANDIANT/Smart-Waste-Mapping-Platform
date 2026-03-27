@@ -13,12 +13,11 @@
   "type": "commonjs",
   "dependencies": {
     "@google/generative-ai": "^0.24.1",
+    "@supabase/supabase-js": "^2.100.1",
     "bcryptjs": "^3.0.3",
     "cors": "^2.8.6",
     "dotenv": "^17.3.1",
-    "express": "^5.2.1",
-    "firebase-admin": "^13.7.0",
-    "sqlite3": "^6.0.1"
+    "express": "^5.2.1"
   },
   "devDependencies": {
     "@ljharb/tsconfig": "^0.3.2"

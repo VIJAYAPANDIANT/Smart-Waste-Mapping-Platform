@@ -13,6 +13,7 @@
     </script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <script src="ui-utils.js"></script>
 </head>
 <body class="dark-theme">
     <nav>
@@ -55,23 +56,22 @@
             const messageDiv = document.getElementById('message');
 
             try {
-                const response = await fetch('http://localhost:3000/signin', {
+                const response = await fetch('/signin', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ email, password })
                 });
 
                 const data = await response.json();
-
                 if (response.ok) {
-                    messageDiv.innerHTML = `<span class="success">${data.message}</span>`;
+                    showToast(data.message);
                     localStorage.setItem('user', JSON.stringify(data.user));
                     setTimeout(() => window.location.href = 'index.html', 1500);
                 } else {
-                    messageDiv.innerHTML = `<span class="error">${data.error}</span>`;
+                    showToast(data.error || 'Login failed', 'error');
                 }
             } catch (error) {
-                messageDiv.innerHTML = `<span class="error">Connection error</span>`;
+                showToast('Connection error', 'error');
             }
         });
     </script>

@@ -22,7 +22,7 @@ const SpaRouter = (() => {
         'index.html': { src: null, init: null, cleanup: null },
         'report.html': { src: 'report.js', init: 'initReport', cleanup: 'cleanupReport' },
         'map.html': { src: 'map.js', init: 'initMap', cleanup: 'cleanupMap' },
-        'awareness.html': { src: null, init: null, cleanup: null },
+        'awareness.html': { src: 'awareness.js', init: 'initAwareness', cleanup: 'cleanupAwareness' },
         'admin.html': { src: 'admin.js', init: 'initAdmin', cleanup: 'cleanupAdmin' }
     };
 
@@ -32,7 +32,7 @@ const SpaRouter = (() => {
         'report.html': 'Report Waste | Smart Waste Mapping Platform',
         'map.html': 'Waste Map | Smart Waste Mapping Platform',
         'awareness.html': 'Waste Awareness | Smart Waste Mapping Platform',
-        'admin.html': 'Admin Dashboard | Smart Waste Mapping Platform'
+        'admin.html': 'Overview Dashboard | Smart Waste Mapping Platform'
     };
 
     let currentPage = null;

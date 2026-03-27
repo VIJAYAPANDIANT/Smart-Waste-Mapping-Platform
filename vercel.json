@@ -1,0 +1,21 @@
+{
+  "version": 2,
+  "functions": {
+    "backend/server.js": {
+      "runtime": "vercel-node@latest"
+    }
+  },
+  "rewrites": [
+    {
+      "source": "/(signup|signin|analyzeWaste|reports|report/.*|reportWaste)",
+      "destination": "/backend/server.js"
+    },
+    {
+      "source": "/(.*)",
+      "destination": "/frontend/$1"
+    }
+  ],
+  "env": {
+    "NODE_ENV": "production"
+  }
+}

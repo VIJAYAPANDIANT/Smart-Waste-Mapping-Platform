@@ -18,11 +18,12 @@ function initReport() {
                 document.getElementById('latitude').value = lat;
                 document.getElementById('longitude').value = lng;
                 document.getElementById('lat-long-display').textContent = `Detected: ${lat.toFixed(4)}, ${lng.toFixed(4)}`;
+                showToast('Location detected!');
             }, (error) => {
-                alert('Error detecting location. Please enter manually.');
+                showToast('Error detecting location. Please enter manually.', 'error');
             });
         } else {
-            alert('Geolocation is not supported by this browser.');
+            showToast('Geolocation is not supported by this browser.', 'error');
         }
     });
 
@@ -58,7 +59,7 @@ function initReport() {
         const reader = new FileReader();
         reader.onloadend = async () => {
             try {
-                const response = await fetch('http://localhost:3000/analyzeWaste', {
+                const response = await fetch('/analyzeWaste', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ imageBase64: reader.result })
@@ -102,6 +103,7 @@ function initReport() {
 
         const reader = new FileReader();
         reader.onloadend = async () => {
+            const user = JSON.parse(localStorage.getItem('user'));
             const reportData = {
                 location,
                 description,
@@ -110,26 +112,27 @@ function initReport() {
                 longitude: lng || 0,
                 photo_url: reader.result,
                 timestamp: new Date().toISOString(),
-                status: 'pending'
+                status: 'pending',
+                user_id: user ? user.id : null
             };
 
             try {
-                const response = await fetch('http://localhost:3000/reportWaste', {
+                const response = await fetch('/reportWaste', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify(reportData)
                 });
 
                 if (response.ok) {
-                    alert('Report submitted successfully!');
+                    showToast('Report submitted successfully!');
                     // Use SPA navigation instead of full reload
                     navigateTo('index.html');
                 } else {
-                    alert('Error submitting report.');
+                    showToast('Error submitting report.', 'error');
                 }
             } catch (error) {
                 console.error('Error:', error);
-                alert('Failed to connect to backend.');
+                showToast('Failed to connect to backend.', 'error');
             } finally {
                 submitBtn.disabled = false;
                 submitBtn.textContent = 'Submit Report';
@@ -139,7 +142,7 @@ function initReport() {
         if (photoFile) {
             reader.readAsDataURL(photoFile);
         } else {
-            alert('Please upload a photo.');
+            showToast('Please upload a photo.', 'info');
             submitBtn.disabled = false;
             submitBtn.textContent = 'Submit Report';
         }
