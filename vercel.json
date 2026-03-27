@@ -7,8 +7,8 @@
   },
   "rewrites": [
     {
-      "source": "/(signup|signin|analyzeWaste|reports|report/.*|reportWaste)",
-      "destination": "/backend/server.js"
+      "source": "/(signup|signin|analyzeWaste|reports|report/.*|reportWaste|leaderboard)",
+      "destination": "/api/index.js"
     },
     {
       "source": "/(.*)",
