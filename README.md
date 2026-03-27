@@ -1,34 +1,45 @@
-# ♻️ SmartWaste Mapping Platform
+# ♻️ SmartWaste Mapping Platform (Modernized)
 
-A premium, modern web application designed to empower communities to track, report, and manage waste effectively. Featuring AI-powered classification and interactive mapping with Zero-Cost infrastructure.
+A premium, state-of-the-art web application designed to empower communities to track, report, and manage waste effectively. Featuring AI-powered classification, interactive mapping, and a gamified reputation system.
+
+---
+
+## 📖 How it Works: The User Journey
+
+The SmartWaste Platform creates a seamless bridge between concerned citizens and city administrators through a simple 4-step lifecycle:
+
+1.  **📸 Snap & Report**: A user encounters a waste hotspot and submits a report through the mobile-friendly form.
+2.  **🤖 AI Analysis**: Our integrated **Gemini AI** instantly analyzes the report image to categorize the waste (Plastic, Metal, Organic) and suggests the best disposal method.
+3.  **🗺️ Live Mapping**: The report is instantly pinned to the global **Live Map**, allowing community members and authorities to visualize hotspots in real-time.
+4.  **🏆 Resolution & Impact**: Administrators review reports via the **Overview Dashboard**. Once a report is marked as "Resolved," the reporting user is automatically awarded **50 Impact Points**, boosting their rank on the city-wide **Leaderboard**.
 
 ---
 
 ## ✨ Key Features
 
-### 🌓 Dual-Mode Interface (Light & Dark)
--   **Dynamic Theme Switcher**: Toggle between a professional light theme and a high-contrast dark theme (pure black background).
--   **Persistent Preference**: Your theme choice is automatically saved in `localStorage`.
--   **Dynamic Component Scaling**: Map tiles and Admin charts automatically swap colors/tiles to ensure perfect legibility in both modes.
+### 🏆 Gamification & Reputation System
+-   **Impact Scores**: Users earn **50 points** for every waste report that is successfully resolved by an administrator.
+-   **City Leaderboard**: Compete with other contributors to become the top waste-mapping hero in your city.
+-   **Visual Progress**: View your rank and total impact directly on the Awareness page.
+
+### 🌓 Pure Black OLED Interface
+-   **OLED Dark Mode**: A stunning, pure black (#000000) dark theme designed for high-contrast visibility and energy efficiency on mobile devices.
+-   **Custom UI Notifications**: Replaced all native browser alerts with premium, non-blocking toast notifications and glassmorphic modals.
+-   **Dynamic Component Scaling**: Map tiles and Overview charts automatically adapt to maintain perfect legibility.
+
+### 📊 Modern Overview Dashboard
+-   **Renamed Lifecycle**: The "Admin" section has been evolved into a streamlined "Overview" dashboard for seamless management.
+-   **Advanced Analytics**: Real-time **Chart.js** visualizations showing waste hotspots by area, report status distribution, and submission trends.
+-   **Bulk Management**: Seed sample data for testing or manage live reports with high-contrast Status Badges.
 
 ### 🗺️ Intelligent Waste Mapping
--   **Free & Independent**: Completely migrated from Google Maps to **Leaflet.js**, eliminating the need for paid API keys or credit card verification.
--   **Custom Dark Map**: Uses **CartoDB Dark Matter** tiles for a stunning, premium aesthetic in dark mode.
--   **Hotspot Detection**: Visual clusters identify areas with high waste density.
--   **Recycling Center Locator**: Integrated markers for nearby plastic, metal, and organic recycling facilities.
+-   **Leaflet.js Integration**: A completely free, independent mapping solution (Zero-Cost).
+-   **CartoDB Dark Matter**: Premium dark-styled maps that perfectly complement the OLED theme.
+-   **Hotspot Detection**: Visual clusters identify areas with high waste density for priority collection.
 
-### 🤖 AI-Powered Waste Classification
--   **Gemini AI Integration**: Upload a photo of waste to get instant categorization (Plastic, Organic, Metal) with high confidence.
--   **Automated Reporting**: AI-detected categories are auto-selected in the report form for faster submission.
-
-### 📱 Mobile-First Design
--   **Fully Responsive**: Optimized for phones, tablets, and desktops.
--   **Adaptive Navigation**: Feature-rich hamburger menu and stacked cards for small screens.
-
-### 📊 Admin Dashboard
--   **Live Statistics**: Real-time counters for total, pending, and resolved reports.
--   **Data Visualization**: Integrated **Chart.js** doughnut charts showing report distribution by area.
--   **Report Management**: Audit, approve, or delete user reports with ease.
+### 🤖 AI-Powered Classification
+-   **Gemini 1.5 Flash**: Leverages Google's latest AI to classify waste (Plastic, Organic, Metal) from photos with incredible speed.
+-   **Smart Reporting**: Automatically populates categories and suggests descriptions based on AI analysis.
 
 ---
 
@@ -36,63 +47,52 @@ A premium, modern web application designed to empower communities to track, repo
 
 | Layer | Technologies |
 | :--- | :--- |
-| **Frontend** | HTML5, Vanilla CSS3 (Custom Variables), JavaScript (ES6+) |
+| **Frontend** | HTML5, Vanilla CSS3 (Custom OLED System), JavaScript (ES6+ SPA) |
 | **Mapping** | Leaflet.js, OpenStreetMap, CartoDB Tiles |
 | **Backend** | Node.js, Express.js |
-| **Database** | Firebase Firestore |
+| **Database** | **Supabase (PostgreSQL)** — High-performance cloud database |
 | **AI/ML** | Google Gemini 1.5 Flash (via Generative AI SDK) |
-| **Icons** | Font Awesome 6.0 |
+| **UI Utils** | Font Awesome 6.0, Chart.js, Custom Toast/Modal Library |
 
 ---
 
 ## 🚀 Getting Started
 
 ### Prerequisites
--   [Node.js](https://nodejs.org/) installed (v16.x or higher)
--   A Firebase project (see Configuration)
+-   [Node.js](https://nodejs.org/) (v18.x or higher recommended)
+-   A **Supabase** Project (URL and Service Key)
+-   A **Gemini AI** API Key
 
 ### Installation
 
-1. **Clone the repository:**
+1. **Clone & Install:**
    ```powershell
    git clone <repository-url>
    cd Smart-Waste-Mapping-Platform
-   ```
-
-2. **Install Dependencies:**
-   Install for both the root and backend folders:
-   ```powershell
    npm install
    cd backend
    npm install
-   cd ..
    ```
 
-3. **Start the Application:**
-   Use the unified runner to start both the Frontend and Backend simultaneously:
-   ```powershell
-   node run-app.js
+2. **Environment Configuration:**
+   Create a `.env` file in the `backend/` directory:
+   ```env
+   SUPABASE_URL=your_supabase_url
+   SUPABASE_SERVICE_KEY=your_supabase_service_role_key
+   GEMINI_API_KEY=your_gemini_api_key
+   PORT=3000
    ```
-   -   **Frontend**: [http://localhost:8080](http://localhost:8080)
-   -   **Backend API**: [http://localhost:3000](http://localhost:3000)
 
----
+3. **Database Setup:** 
+   Run the SQL provided in your Supabase SQL editor to create the `users` (with `impact_score`) and `waste_reports` tables.
 
-## ⚙️ Configuration
-
-### 1. Firebase (Required for Reports)
-1.  Create a project in the [Firebase Console](https://console.firebase.google.com/).
-2.  Go to **Service Accounts** and generate a new private key.
-3.  Save the JSON file as `backend/config/serviceAccountKey.json`.
-4.  Enable **Firestore Database** and create a collection named `waste_reports`.
-
-### 2. Gemini AI (Optional for AI Classification)
-1.  Get a free API key from [Google AI Studio](https://aistudio.google.com/).
-2.  Add your key to `backend/.env`:
-    ```env
-    GEMINI_API_KEY=your_actual_key_here
+4.  **Launch:**
+    From the root directory, run the unified application runner:
+    ```powershell
+    node run-app.js
     ```
-    *If no key is provided, the system will use mock classification for demonstration.*
+    -   **Unified App URL**: [http://localhost:8080](http://localhost:8080)
+    -   **Backend API**: [http://localhost:3000](http://localhost:3000)
 
 ---
 
@@ -100,19 +100,16 @@ A premium, modern web application designed to empower communities to track, repo
 
 ```text
 ├── backend/
-│   ├── config/             # Firebase configuration
-│   ├── server.js           # Express API server
-│   └── .env                # API Keys (Protected)
+│   ├── server.js           # Express API & DB Logic
+│   ├── db.js               # Supabase Client Initialization
+│   └── .env                # Secure Keys
 ├── frontend/
-│   ├── index.html          # Landing Page
-│   ├── report.html         # Waste Reporting Form
-│   ├── map.html            # Leaflet Map View
-│   ├── awareness.html      # Segregation Guide
-│   ├── admin.html          # Management Dashboard
-│   ├── style.css           # Global Themes & Layouts
-│   ├── theme-toggle.js      # Light/Dark logic
-│   └── [js files]          # Component-specific logic
-├── run-app.js              # Unified Application Runner
+│   ├── index.html          # SPA Core Shell
+│   ├── admin.html          # Overview Dashboard
+│   ├── ui-utils.js         # Custom Modal/Toast Library
+│   ├── router.js           # Client-side SPA Routing
+│   ├── style.css           # OLED Theme System
+│   └── [map/report/etc]    # Specialized modules
 └── README.md
 ```
 
