@@ -28,12 +28,12 @@ The AI-Powered Smart Waste Mapping Platform creates a seamless bridge between co
 
 ## 🚀 Feature Highlights
 
-| 📸 Reporting | 🤖 AI Analysis | 🗺️ Live Map |
-| :--- | :--- | :--- |
+| 📸 Reporting                                  | 🤖 AI Analysis                                   | 🗺️ Live Map                                     |
+| :-------------------------------------------- | :----------------------------------------------- | :---------------------------------------------- |
 | Quick submission with GPS & reverse geocoding | Gemini AI classifies waste from photos instantly | Interactive hotspot mapping & recycling centers |
 
-| 🎨 OLED UI | 🔐 Secure Auth | 🌱 Awareness |
-| :--- | :--- | :--- |
+| 🎨 OLED UI                                    | 🔐 Secure Auth                             | 🌱 Awareness                             |
+| :-------------------------------------------- | :----------------------------------------- | :--------------------------------------- |
 | Premium black theme with glassmorphic accents | Full PostgreSQL-backed authentication flow | Education, Success Stories & Leaderboard |
 
 ## 🌐 Real Website Demonstration & Video Overview
