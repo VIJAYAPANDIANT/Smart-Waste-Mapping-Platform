@@ -1,4 +1,4 @@
-# ♻️ Smart Waste Mapping Platform with AI Analysis
+# ♻️ AI-Powered Smart Waste Mapping Platform
 
 ![Node.js](https://img.shields.io/badge/Node.js-v18+-green?logo=nodedotjs) ![Vanilla JS](https://img.shields.io/badge/Vanilla_JS-ES6+-yellow?logo=javascript) ![Supabase](https://img.shields.io/badge/Supabase-Database-3ecf8e?logo=supabase) ![Gemini AI](https://img.shields.io/badge/Google_Gemini-Vision_API-blue?logo=google)
 
@@ -9,6 +9,7 @@ Smart Waste Mapping Platform is a full-stack, production-ready web application d
 ## 📋 Table of Contents
 
 - [Overview](#-overview)
+- [Feature Highlights](#-feature-highlights)
 - [Live Demo](#-live-demo)
 - [Features](#-features)
 - [User Roles & Workflows](#-user-roles--workflows)
@@ -25,19 +26,32 @@ Smart Waste Mapping Platform is a full-stack, production-ready web application d
 
 The SmartWaste Platform creates a seamless bridge between concerned citizens and city administrators. Users sign up, snap a photo of a waste hotspot, and submit a report. The platform instantly runs the image through **Gemini 1.5 Flash Vision API** to classify the waste type. The report is then pinned to a global Live Map. As administrators review and resolve reports via the Overview Dashboard, reporting users are automatically awarded Impact Points, boosting their rank on the city-wide Leaderboard.
 
+## 🚀 Feature Highlights
+
+| 📸 Reporting | 🤖 AI Analysis | 🗺️ Live Map |
+| :--- | :--- | :--- |
+| Quick submission with GPS & reverse geocoding | Gemini AI classifies waste from photos instantly | Interactive hotspot mapping & recycling centers |
+
+| 🎨 OLED UI | 🔐 Secure Auth | 🌱 Awareness |
+| :--- | :--- | :--- |
+| Premium black theme with glassmorphic accents | Full PostgreSQL-backed authentication flow | Education, Success Stories & Leaderboard |
+
 ## 🌐 Real Website Demonstration & Video Overview
 
 📺 **[Watch Real Website Demo (FlexClip) →](https://www.flexclip.com/share/15578373xMqAzXKOc6FjYUDF1Pr9Ctdvz5aewCxf.html)**  
 📺 **[Watch Real Website Demo (ScreenApp) →](https://screenapp.io/app/v/zDsbXT1ZnQ)**
 
 ## 🔑 Real Account Credentials
+
 To test the platform's features, you can use the following real pre-configured accounts:
 
 **🛡️ Administrator Account** (Full access to Overview Dashboard)
+
 - **Email:** `vijay@gmail.com`
 - **Password:** `1234567890`
 
 **👤 Citizen / User Account** (Submit Reports & Earn Impact Points)
+
 - **Email:** `1m1b@gmail.com`
 - **Password:** `12345678`
 
@@ -79,6 +93,12 @@ To test the platform's features, you can use the following real pre-configured a
 - **Advanced Analytics:** Chart.js visualizations tracking waste categories and resolution rates.
 - **Gamification System:** Earn **50 Impact Points** for every resolved report.
 - **Live Leaderboard:** Compete with top contributors city-wide.
+
+### 7. 🌱 Community Awareness & Education
+
+- **Waste Segregation Guide:** Practical education on Organic, Dry, and Hazardous waste management.
+- **Real-World Impact:** Success stories from around the globe to inspire local action.
+- **Live Leaderboard:** Visual tracking of community contributions and top environmental warriors.
 
 ## 👥 User Roles & Workflows
 
