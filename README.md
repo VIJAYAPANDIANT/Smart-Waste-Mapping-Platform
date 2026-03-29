@@ -25,15 +25,28 @@ Smart Waste Mapping Platform is a full-stack, production-ready web application d
 
 The SmartWaste Platform creates a seamless bridge between concerned citizens and city administrators. Users sign up, snap a photo of a waste hotspot, and submit a report. The platform instantly runs the image through **Gemini 1.5 Flash Vision API** to classify the waste type. The report is then pinned to a global Live Map. As administrators review and resolve reports via the Overview Dashboard, reporting users are automatically awarded Impact Points, boosting their rank on the city-wide Leaderboard.
 
-## 🌐 Live Demo
+## 🌐 Live Demo & Video Overview
 
-🚀 **[View the Live App on Vercel →](#)** _(Update with your Vercel URL)_
+📺 **[Watch Video Overview (FlexClip) →](https://www.flexclip.com/share/15578373xMqAzXKOc6FjYUDF1Pr9Ctdvz5aewCxf.html)**  
+📺 **[Watch Video Overview (ScreenApp) →](https://screenapp.io/app/v/zDsbXT1ZnQ)**
+
+## 🔑 Demo Credentials
+To easily test the platform's features, you can use the following pre-configured accounts:
+
+**🛡️ Administrator Account** (Access to Overview Dashboard)
+- **Email:** `vijay@gmail.com`
+- **Password:** `1234567890`
+
+**👤 Citizen / User Account** (Submit Reports & Earn Points)
+- **Email:** `1m1b@gmail.com`
+- **Password:** `12345678`
 
 ## ✨ Features
 
 ### 1. 📸 Interactive Waste Reporting
 
 - **Mobile-friendly form:** Quickly submit reports with Location, GPS coordinates, and descriptions.
+- **Reverse Geocoding:** Automatically converts detected GPS coordinates into human-readable street addresses via the OpenStreetMap API.
 - **Photo Uploads:** Attach images of the waste directly mapped to the location.
 - **Real-time Status tracking:** See your reports change from 'Pending' to 'Resolved'.
 

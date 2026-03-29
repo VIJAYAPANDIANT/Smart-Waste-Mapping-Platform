@@ -12,15 +12,41 @@ function initReport() {
 
     detectBtn.addEventListener('click', () => {
         if (navigator.geolocation) {
-            navigator.geolocation.getCurrentPosition((position) => {
+            
+            // Show loading state on button
+            const originalText = detectBtn.innerHTML;
+            detectBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Detecting...';
+            detectBtn.disabled = true;
+
+            navigator.geolocation.getCurrentPosition(async (position) => {
                 const lat = position.coords.latitude;
                 const lng = position.coords.longitude;
                 document.getElementById('latitude').value = lat;
                 document.getElementById('longitude').value = lng;
                 document.getElementById('lat-long-display').textContent = `Detected: ${lat.toFixed(4)}, ${lng.toFixed(4)}`;
+                
+                try {
+                    // Reverse geocoding using OpenStreetMap Nominatim API
+                    const response = await fetch(`https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lng}`);
+                    const data = await response.json();
+                    
+                    if (data && data.display_name) {
+                        // Simplify the address if it's too long
+                        const addressParts = data.display_name.split(', ');
+                        const shortAddress = addressParts.slice(0, 3).join(', ');
+                        document.getElementById('location').value = shortAddress;
+                    }
+                } catch (err) {
+                    console.error('Reverse geocoding failed', err);
+                }
+
                 showToast('Location detected!');
+                detectBtn.innerHTML = originalText;
+                detectBtn.disabled = false;
             }, (error) => {
                 showToast('Error detecting location. Please enter manually.', 'error');
+                detectBtn.innerHTML = originalText;
+                detectBtn.disabled = false;
             });
         } else {
             showToast('Geolocation is not supported by this browser.', 'error');
