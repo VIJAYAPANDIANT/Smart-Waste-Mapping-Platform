@@ -7,11 +7,38 @@ let markers = [];
 let tileLayer;
 
 const recyclingCenters = [
+    // Karnataka
     { name: "City Plastic Recycling", lat: 12.9716, lng: 77.5946, type: "Plastic" },
     { name: "Eco E-Waste Collection", lat: 12.9850, lng: 77.6100, type: "E-Waste" },
     { name: "Green Composting Center", lat: 12.9500, lng: 77.5800, type: "Compost" },
     { name: "Koramangala Recycling Hub", lat: 12.9300, lng: 77.6200, type: "Mixed" },
-    { name: "Whitefield Waste Management", lat: 12.9700, lng: 77.7400, type: "Paper" }
+    { name: "Whitefield Waste Management", lat: 12.9700, lng: 77.7400, type: "Paper" },
+    
+    // Tamil Nadu (Chennai)
+    { name: "TN Green Segregation", lat: 13.0827, lng: 80.2707, type: "Mixed" },
+    { name: "Chennai E-Waste Management", lat: 12.9815, lng: 80.2500, type: "E-Waste" },
+    { name: "Coimbatore Plastic Recycling", lat: 11.0168, lng: 76.9558, type: "Plastic" },
+
+    // Kerala
+    { name: "Kochi Marine Debris Recycler", lat: 9.9816, lng: 76.2999, type: "Plastic" },
+    { name: "Trivandrum Organic Compost", lat: 8.5241, lng: 76.9366, type: "Compost" },
+    
+    // Andhra Pradesh
+    { name: "Vizag Metal Salvage", lat: 17.6868, lng: 83.2185, type: "Metal" },
+    { name: "Vijayawada Paper Mills", lat: 16.5062, lng: 80.6480, type: "Paper" },
+    
+    // Delhi
+    { name: "Delhi Central Recycling", lat: 28.6139, lng: 77.2090, type: "Mixed" },
+    { name: "Noida Sector 62 E-Waste", lat: 28.6100, lng: 77.3600, type: "E-Waste" },
+    { name: "Gurugram Scrappers", lat: 28.4595, lng: 77.0266, type: "Metal" },
+    
+    // Maharashtra
+    { name: "Mumbai Eco-Plast", lat: 19.0760, lng: 72.8777, type: "Plastic" },
+    { name: "Pune Compost Plant", lat: 18.5204, lng: 73.8567, type: "Compost" },
+    
+    // West Bengal
+    { name: "Kolkata Green Paper Ltd", lat: 22.5726, lng: 88.3639, type: "Paper" },
+    { name: "Salt Lake E-Waste Facility", lat: 22.5800, lng: 88.4200, type: "E-Waste" }
 ];
 
 function initMap() {

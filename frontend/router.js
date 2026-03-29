@@ -19,7 +19,7 @@ const SpaRouter = (() => {
 
     // Page-specific script paths and their init/cleanup functions
     const PAGE_SCRIPTS = {
-        'index.html': { src: null, init: null, cleanup: null },
+        'app.html': { src: null, init: null, cleanup: null },
         'report.html': { src: 'report.js', init: 'initReport', cleanup: 'cleanupReport' },
         'map.html': { src: 'map.js', init: 'initMap', cleanup: 'cleanupMap' },
         'awareness.html': { src: 'awareness.js', init: 'initAwareness', cleanup: 'cleanupAwareness' },
@@ -28,7 +28,7 @@ const SpaRouter = (() => {
 
     // Page titles
     const PAGE_TITLES = {
-        'index.html': 'Smart Waste Mapping Platform | Clean City, Green Planet',
+        'app.html': 'Smart Waste Mapping Platform | Clean City, Green Planet',
         'report.html': 'Report Waste | Smart Waste Mapping Platform',
         'map.html': 'Waste Map | Smart Waste Mapping Platform',
         'awareness.html': 'Waste Awareness | Smart Waste Mapping Platform',
@@ -47,7 +47,7 @@ const SpaRouter = (() => {
     function init() {
         // Determine initial page from URL
         const path = window.location.pathname;
-        const page = path.substring(path.lastIndexOf('/') + 1) || 'index.html';
+        const page = path.substring(path.lastIndexOf('/') + 1) || 'app.html';
         currentPage = page;
 
         // Intercept all nav link clicks — use capture phase to beat Leaflet
@@ -65,7 +65,7 @@ const SpaRouter = (() => {
 
         // Handle browser back/forward
         window.addEventListener('popstate', (e) => {
-            const page = (e.state && e.state.page) ? e.state.page : 'index.html';
+            const page = (e.state && e.state.page) ? e.state.page : 'app.html';
             if (page !== currentPage && !isNavigating) {
                 loadPage(page, true);
             }

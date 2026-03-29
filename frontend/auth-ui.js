@@ -55,11 +55,11 @@ function initAuthUI() {
             e.preventDefault();
             localStorage.removeItem('user');
             // Full redirect to login page (separate page, not in SPA)
-            window.location.href = 'login.html';
+            window.location.href = 'index.html';
         });
     } else {
         authNav.innerHTML = `
-            <a href="login.html" class="btn btn-primary btn-auth">Login</a>
+            <a href="index.html" class="btn btn-primary btn-auth">Login</a>
         `;
     }
 }

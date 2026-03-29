@@ -126,7 +126,7 @@ function initReport() {
                 if (response.ok) {
                     showToast('Report submitted successfully!');
                     // Use SPA navigation instead of full reload
-                    navigateTo('index.html');
+                    navigateTo('app.html');
                 } else {
                     showToast('Error submitting report.', 'error');
                 }

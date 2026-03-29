@@ -3,84 +3,170 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Smart Waste Mapping Platform | Clean City, Green Planet</title>
+    <title>Authentication - SmartWaste</title>
     <link rel="stylesheet" href="style.css">
     <script>
-        // Gate check: redirect to login if not authenticated
-        if (!localStorage.getItem('user')) {
-             window.location.href = 'login.html';
+        // Redirect to app if already logged in
+        if (localStorage.getItem('user')) {
+             window.location.href = 'app.html';
         }
     </script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <script src="ui-utils.js"></script>
+    <style>
+        .tabs {
+            display: flex;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border-color);
+        }
+        .tab-btn {
+            background: none;
+            border: none;
+            padding: 10px 20px;
+            color: var(--text-muted);
+            font-size: 1rem;
+            cursor: pointer;
+            flex: 1;
+            font-family: inherit;
+            transition: all 0.3s;
+        }
+        .tab-btn.active {
+            color: var(--primary-color);
+            border-bottom: 2px solid var(--primary-color);
+            font-weight: 600;
+        }
+        .tab-content {
+            display: none;
+        }
+        .tab-content.active {
+            display: block;
+        }
+    </style>
 </head>
-<body>
-    <header>
-        <div class="logo">
-            <i class="fas fa-recycle"></i>
-            <span>SmartWaste</span>
+<body class="dark-theme">
+    <nav>
+        <div class="nav-container">
+            <a href="app.html" class="logo">
+                <i class="fas fa-recycle"></i> Smart<span>Waste</span>
+            </a>
         </div>
-        <div class="menu-toggle">
-            <i class="fas fa-bars"></i>
+    </nav>
+
+    <main class="auth-container">
+        <div class="auth-card">
+            <div class="tabs">
+                <button class="tab-btn active" onclick="switchTab('login')">Login</button>
+                <button class="tab-btn" onclick="switchTab('register')">Register</button>
+            </div>
+            
+            <div id="login-tab" class="tab-content active">
+                <h2>Welcome Back</h2>
+                <p>Sign in to manage your reports</p>
+                
+                <form id="loginForm">
+                    <div class="input-group">
+                        <label for="login-email">Email</label>
+                        <input type="email" id="login-email" required placeholder="Enter email">
+                    </div>
+                    <div class="input-group">
+                        <label for="login-password">Password</label>
+                        <input type="password" id="login-password" required placeholder="Enter password">
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-block">Login</button>
+                </form>
+            </div>
+
+            <div id="register-tab" class="tab-content">
+                <h2>Create Account</h2>
+                <p>Join the community to track and report waste</p>
+                
+                <form id="signupForm">
+                    <div class="input-group">
+                        <label for="reg-username">Username</label>
+                        <input type="text" id="reg-username" required placeholder="Choose a username">
+                    </div>
+                    <div class="input-group">
+                        <label for="reg-email">Email</label>
+                        <input type="email" id="reg-email" required placeholder="Enter your email">
+                    </div>
+                    <div class="input-group">
+                        <label for="reg-password">Password</label>
+                        <input type="password" id="reg-password" required placeholder="Create a password">
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-block">Sign Up</button>
+                </form>
+            </div>
+            
+            <div id="message" class="message"></div>
         </div>
-        <nav>
-            <ul>
-                <li><a href="index.html" data-route="index.html" class="active">Home</a></li>
-                <li><a href="report.html" data-route="report.html">Report Waste</a></li>
-                <li><a href="map.html" data-route="map.html">Map View</a></li>
-                <li><a href="awareness.html" data-route="awareness.html">Awareness</a></li>
-                <li><a href="admin.html" data-route="admin.html">Overview</a></li>
-                <li id="auth-nav"></li>
-                <li><button id="theme-toggle" class="theme-toggle-btn" title="Toggle Light/Dark Mode"><i class="fas fa-moon"></i></button></li>
-            </ul>
-        </nav>
-    </header>
-
-    <!-- SPA Content Area — page content is injected here -->
-    <main id="spa-content" class="spa-content">
-        <!-- Default: Home page content -->
-        <section class="hero">
-            <h1>Smart Waste Mapping Platform</h1>
-            <p>Every report counts. Help us identify waste hotspots and keep our community clean. Visualize reports on an interactive map and find nearby recycling centers.</p>
-            <div class="cta-buttons">
-                <a href="report.html" data-route="report.html" class="btn btn-primary">Report Waste</a>
-                <a href="map.html" data-route="map.html" class="btn btn-secondary">View Waste Map</a>
-                <a href="awareness.html" data-route="awareness.html" class="btn btn-secondary">Recycling Tips</a>
-            </div>
-        </section>
-
-        <section class="features">
-            <div class="section-title">
-                <h2>Our Mission</h2>
-                <p>Empowering citizens to take action for a cleaner environment.</p>
-            </div>
-            <div class="feature-grid">
-                <div class="feature-card">
-                    <i class="fas fa-map-marker-alt"></i>
-                    <h3>Report Waste</h3>
-                    <p>Easily report illegal dumping or overflowing bins with GPS location and photos.</p>
-                </div>
-                <div class="feature-card">
-                    <i class="fas fa-chart-line"></i>
-                    <h3>Visualize Hotspots</h3>
-                    <p>See real-time waste data on an interactive map to help authorities take action.</p>
-                </div>
-                <div class="feature-card">
-                    <i class="fas fa-leaf"></i>
-                    <h3>Awareness</h3>
-                    <p>Learn about waste segregation and find local recycling centers to reduce your footprint.</p>
-                </div>
-            </div>
-        </section>
     </main>
 
-    <footer>
-        <p>&copy; 2026 SmartWaste Mapping Platform. All rights reserved.</p>
-    </footer>
+    <script>
+        function switchTab(tab) {
+            document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+            document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
+            
+            if (tab === 'login') {
+                document.getElementById('login-tab').classList.add('active');
+                document.querySelector('.tab-btn[onclick="switchTab(\'login\')"]').classList.add('active');
+            } else {
+                document.getElementById('register-tab').classList.add('active');
+                document.querySelector('.tab-btn[onclick="switchTab(\'register\')"]').classList.add('active');
+            }
+        }
 
-    <script src="auth-ui.js"></script>
-    <script src="ui-utils.js"></script>
-    <script src="theme-toggle.js"></script>
-    <script src="mobile-menu.js"></script>
-    <script src="router.js"></script>
+        document.getElementById('loginForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const email = document.getElementById('login-email').value;
+            const password = document.getElementById('login-password').value;
+
+            try {
+                const response = await fetch('/signin', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ email, password })
+                });
+
+                const data = await response.json();
+                if (response.ok) {
+                    showToast(data.message);
+                    localStorage.setItem('user', JSON.stringify(data.user));
+                    setTimeout(() => window.location.href = 'app.html', 1500);
+                } else {
+                    showToast(data.error || 'Login failed', 'error');
+                }
+            } catch (error) {
+                showToast('Connection error', 'error');
+            }
+        });
+
+        document.getElementById('signupForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const username = document.getElementById('reg-username').value;
+            const email = document.getElementById('reg-email').value;
+            const password = document.getElementById('reg-password').value;
+
+            try {
+                const response = await fetch('/signup', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ username, email, password })
+                });
+
+                const data = await response.json();
+
+                if (response.ok) {
+                    showToast('Account created! Logging you in...');
+                    localStorage.setItem('user', JSON.stringify(data.user));
+                    setTimeout(() => window.location.href = 'app.html', 1500);
+                } else {
+                    showToast(data.error || 'Signup failed', 'error');
+                }
+            } catch (error) {
+                showToast('Connection error', 'error');
+            }
+        });
+    </script>
 </body>
 </html>
