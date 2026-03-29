@@ -4,7 +4,7 @@
 
 > **🌱 Proudly built for the 1M1B Green Internship Project**
 
-Smart Waste Mapping Platform is a full-stack, production-ready web application designed to empower communities to track, report, and manage waste effectively. It features a seamless mobile-friendly waste reporting workflow, Google Gemini-powered waste classification, live interactive mapping, secure authentication, and a gamified reputation system — all built with a modern tech stack and designed for a premium user experience.
+AI-Powered Smart Waste Mapping Platform is a full-stack, production-ready web application designed to empower communities to track, report, and manage waste effectively. It features a seamless mobile-friendly waste reporting workflow, Google Gemini-powered waste classification, live interactive mapping, secure authentication, and a gamified reputation system — all built with a modern tech stack and designed for a premium user experience.
 
 ## 📋 Table of Contents
 
@@ -24,7 +24,7 @@ Smart Waste Mapping Platform is a full-stack, production-ready web application d
 
 ## 🔍 Overview
 
-The SmartWaste Platform creates a seamless bridge between concerned citizens and city administrators. Users sign up, snap a photo of a waste hotspot, and submit a report. The platform instantly runs the image through **Gemini 1.5 Flash Vision API** to classify the waste type. The report is then pinned to a global Live Map. As administrators review and resolve reports via the Overview Dashboard, reporting users are automatically awarded Impact Points, boosting their rank on the city-wide Leaderboard.
+The AI-Powered Smart Waste Mapping Platform creates a seamless bridge between concerned citizens and city administrators. Users sign up, snap a photo of a waste hotspot, and submit a report. The platform instantly runs the image through **Gemini 1.5 Flash Vision API** to classify the waste type. The report is then pinned to a global Live Map. As administrators review and resolve reports via the Overview Dashboard, reporting users are automatically awarded Impact Points, boosting their rank on the city-wide Leaderboard.
 
 ## 🚀 Feature Highlights
 
@@ -164,7 +164,7 @@ User Registers / Logs In
 ## 📂 Project Structure
 
 ```text
-📦 Smart-Waste-Mapping-Platform/
+📦 AI-Powered-Smart-Waste-Mapping-Platform/
 ├── 📁 backend/                    # Express.js API Server
 │   ├── 📄 server.js               # Entry point (Express app & API logic)
 │   ├── 📄 db.js                   # Supabase Client Initialization
@@ -196,8 +196,8 @@ User Registers / Logs In
 ### 1. Clone the Repository
 
 ```powershell
-git clone https://github.com/your-username/smart-waste-mapping.git
-cd smart-waste-mapping
+git clone https://github.com/your-username/ai-powered-smart-waste-mapping.git
+cd ai-powered-smart-waste-mapping
 ```
 
 ### 2. Setup Environment Variables
