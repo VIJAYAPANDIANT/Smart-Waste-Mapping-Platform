@@ -1,13 +1,13 @@
 {
   "version": 2,
-  "rewrites": [
+  "routes": [
     {
-      "source": "/(signup|signin|analyzeWaste|reports|reportWaste|leaderboard|seed|report/.*)",
-      "destination": "/api/index.js"
+      "src": "/(signup|signin|analyzeWaste|reports|reportWaste|leaderboard|seed|report/.*)",
+      "dest": "/api/index.js"
     },
     {
-      "source": "/(.*)",
-      "destination": "/frontend/$1"
+      "src": "/(.*)",
+      "dest": "/frontend/$1"
     }
   ],
   "cleanUrls": true
