@@ -2,9 +2,9 @@
   "name": "smart-waste-mapping-platform",
   "version": "1.0.0",
   "description": "Unified runner for SmartWaste Mapping Platform",
-  "main": "run-app.js",
+  "main": "backend/server.js",
   "scripts": {
-    "start": "node run-app.js",
+    "start": "node backend/server.js",
     "build": "echo 'Building...'"
   },
   "dependencies": {
@@ -13,11 +13,6 @@
     "bcryptjs": "^3.0.3",
     "cors": "^2.8.6",
     "dotenv": "^17.3.1",
-    "express": "^4.18.2",
-    "firebase-admin": "^13.7.0",
-    "sqlite3": "^6.0.1"
-  },
-  "devDependencies": {
-    "@ljharb/tsconfig": "^0.3.2"
+    "express": "^4.18.2"
   }
 }

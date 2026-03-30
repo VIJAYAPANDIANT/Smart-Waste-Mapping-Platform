@@ -231,14 +231,13 @@ _Note: Ensure to run the required SQL scripts in your Supabase SQL editor to cre
 
 ### 4. Run Locally
 
-From the root directory, launch the unified runner:
+From the root directory, launch the unified server:
 
 ```powershell
-node run-app.js
+npm start
 ```
 
-- **Unified App:** `http://localhost:8080/`
-- **Backend API:** `http://localhost:3000/`
+- **Unified Platform:** `http://localhost:3000/` (Serves both Frontend & API)
 
 ## 📡 API Reference
 

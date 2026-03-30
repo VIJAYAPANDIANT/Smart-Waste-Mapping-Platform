@@ -33,7 +33,7 @@ async function createAdmin(username, email, password) {
             }
         } else {
             console.log(`✅ Admin user "${data.username}" created successfully!`);
-            console.log('You can now log in at http://localhost:8080/login.html');
+            console.log('You can now log in at http://localhost:3000/index.html');
         }
     } catch (err) {
         console.error('❌ Unexpected error:', err.message);
