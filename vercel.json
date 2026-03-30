@@ -1,0 +1,14 @@
+{
+  "version": 2,
+  "rewrites": [
+    {
+      "source": "/(signup|signin|analyzeWaste|reports|reportWaste|leaderboard|seed|report/.*)",
+      "destination": "/api/index.js"
+    },
+    {
+      "source": "/(.*)",
+      "destination": "/frontend/$1"
+    }
+  ],
+  "cleanUrls": true
+}
