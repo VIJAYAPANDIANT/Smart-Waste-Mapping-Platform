@@ -22,9 +22,9 @@ function initAuthUI() {
                     </div>
                     <div class="dropdown-body">
                         <div class="info-item">
-                            <label>PASSWORD</label>
-                            <div class="password-box">
-                                <span>${user.password ? '•'.repeat(user.password.length) : '••••••••'}</span>
+                            <label>ACCOUNT TYPE</label>
+                            <div class="role-badge">
+                                <i class="fas fa-shield-alt"></i> ${user.role.toUpperCase()}
                             </div>
                         </div>
                     </div>

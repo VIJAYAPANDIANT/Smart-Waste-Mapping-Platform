@@ -1,6 +1,5 @@
-require('dotenv').config();
+require('dotenv').config({ path: '../.env' });
 const { createClient } = require('@supabase/supabase-js');
-const bcrypt = require('bcryptjs');
 
 const supabaseUrl = process.env.SUPABASE_URL;
 const supabaseKey = process.env.SUPABASE_SERVICE_KEY;
@@ -13,27 +12,41 @@ if (!supabaseUrl || !supabaseKey) {
 const supabase = createClient(supabaseUrl, supabaseKey);
 
 async function createAdmin(username, email, password) {
-    console.log(`⏳ Creating admin user: ${username} (${email})...`);
+    console.log(`⏳ Creating admin user in Supabase Auth: ${username} (${email})...`);
     
     try {
-        const hashedPassword = await bcrypt.hash(password, 10);
-        
+        // 1. Create Auth user
+        const { data: authData, error: authError } = await supabase.auth.admin.createUser({
+            email: email,
+            password: password,
+            email_confirm: true,
+            user_metadata: { username }
+        });
+
+        if (authError) {
+            console.error('❌ Error creating auth user:', authError.message);
+            if (authError.message.includes('User already registered')) {
+                console.log('👉 Tip: If user exists in Auth but not in users table, check your database.');
+            }
+            return;
+        }
+
+        console.log(`✅ Auth user created. Now creating profile in "users" table...`);
+
+        // 2. Create profile in users table
         const { data, error } = await supabase
             .from('users')
             .insert([
-                { username, email, password: hashedPassword, role: 'admin' }
+                { id: authData.user.id, username, email, role: 'admin' }
             ])
             .select()
             .single();
 
         if (error) {
-            console.error('❌ Error creating admin:', error.message);
-            if (error.message.includes('relation "public.users" does not exist')) {
-                console.log('👉 Tip: You must run the SQL in Supabase Editor first (check walkthrough.md)');
-            }
+            console.error('❌ Error creating profile:', error.message);
         } else {
-            console.log(`✅ Admin user "${data.username}" created successfully!`);
-            console.log('You can now log in at http://localhost:3000/index.html');
+            console.log(`✅ Admin profile "${data.username}" created successfully with ID: ${data.id}`);
+            console.log('You can now log in at your deployed Vercel URL or http://localhost:3000');
         }
     } catch (err) {
         console.error('❌ Unexpected error:', err.message);
