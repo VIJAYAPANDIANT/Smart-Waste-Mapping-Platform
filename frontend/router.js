@@ -46,8 +46,14 @@ const SpaRouter = (() => {
      */
     function init() {
         // Determine initial page from URL
-        const path = window.location.pathname;
-        const page = path.substring(path.lastIndexOf('/') + 1) || 'app.html';
+        let path = window.location.pathname;
+        let page = path.substring(path.lastIndexOf('/') + 1) || 'app.html';
+        
+        // Normalize page name (Vercel cleanUrls might strip .html)
+        if (page && !page.includes('.') && page !== 'app.html') {
+            page = page + '.html';
+        }
+        
         currentPage = page;
 
         // Intercept all nav link clicks — use capture phase to beat Leaflet
