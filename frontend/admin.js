@@ -42,7 +42,7 @@ async function loadDashboard() {
         lastReports = reports;
 
         updateStats(reports);
-        populateTable(reports.slice(0, 10)); // Show only top 10 in table
+        populateTable(reports); // Show all reports in table
         renderAllCharts(reports);
     } catch (error) {
         console.error("Error loading dashboard data:", error);

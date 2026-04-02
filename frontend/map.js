@@ -118,7 +118,8 @@ window.addEventListener('themeChanged', (e) => {
 
 async function loadReports() {
     try {
-        const response = await fetch('http://localhost:3000/reports');
+        // Use relative path to work on any host/port
+        const response = await fetch('/reports');
         const reports = await response.json();
 
         displayReports(reports);
@@ -154,6 +155,12 @@ function displayReports(reports) {
             markers.push(marker);
         }
     });
+
+    // Auto-center the map to show all reports if any exist
+    if (markers.length > 0) {
+        const group = L.featureGroup(markers);
+        map.fitBounds(group.getBounds().pad(0.1));
+    }
 }
 
 function detectHotspots(reports) {

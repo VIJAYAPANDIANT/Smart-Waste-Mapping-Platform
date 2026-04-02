@@ -165,8 +165,7 @@ router.get('/leaderboard', async (req, res) => {
         const { data, error } = await db
             .from('users')
             .select('id, username, impact_score')
-            .order('impact_score', { ascending: false })
-            .limit(10);
+            .order('impact_score', { ascending: false });
 
         if (error) throw error;
         res.status(200).json(data);
@@ -215,6 +214,23 @@ router.post('/seed', async (req, res) => {
     } catch (error) {
         console.error("Seeding error:", error);
         res.status(500).json({ error: "Failed to seed data: " + error.message });
+    }
+});
+
+// DELETE /report/:id - Remove a waste report
+router.delete('/report/:id', async (req, res) => {
+    try {
+        const { id } = req.params;
+        const { error } = await db
+            .from('waste_reports')
+            .delete()
+            .eq('id', id);
+
+        if (error) throw error;
+        res.status(200).json({ message: "Report deleted successfully" });
+    } catch (error) {
+        console.error("Error deleting report:", error);
+        res.status(500).json({ error: "Failed to delete report: " + error.message });
     }
 });
 

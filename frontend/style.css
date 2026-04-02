@@ -583,6 +583,8 @@ footer {
     border-radius: 12px;
     border: 1px solid var(--border-color);
     overflow-x: auto;
+    max-height: 600px;
+    overflow-y: auto;
 }
 
 table {
@@ -1427,6 +1429,11 @@ th {
 .top-three .username {
     color: var(--primary-color);
     font-size: 1.2rem;
+}
+
+#leaderboard-list {
+    max-height: 500px;
+    overflow-y: auto;
 }
 
 .loading-spinner {
