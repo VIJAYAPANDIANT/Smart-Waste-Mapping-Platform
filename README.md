@@ -149,8 +149,8 @@ Follow these instructions to configure and run the full stack (Frontend, Backend
 
 1. **Clone the repository:**
    ```bash
-   git clone https://github.com/VIJAYAPANDIANT/AI-Powered-Smart-Waste-Mapping-Platform.git
-   cd AI-Powered-Smart-Waste-Mapping-Platform
+   git clone https://github.com/VIJAYAPANDIANT/ai-powered-smart-waste-mapping-platform.git
+   cd ai-powered-smart-waste-mapping-platform
    ```
 
 2. **Backend Setup:**
